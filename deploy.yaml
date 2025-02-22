@@ -21,3 +21,4 @@ steps:
       pathToPublish: 'build'
       artifactName: 'vite-app'
     displayName: 'Publish build artifacts'
+    
