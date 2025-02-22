@@ -1,0 +1,23 @@
+trigger:
+  branches:
+    include:
+      - main  # Runs on push to 'main' branch
+
+pool:
+  vmImage: 'ubuntu-latest'  # Use Linux machine for the build
+
+steps:
+  - task: NodeTool@0
+    inputs:
+      versionSpec: '18.x'  # Set Node.js version
+
+  - script: |
+      npm install
+      vite build
+    displayName: 'Install dependencies & build Vite app'
+
+  - task: PublishBuildArtifacts@1
+    inputs:
+      pathToPublish: 'build'
+      artifactName: 'vite-app'
+    displayName: 'Publish build artifacts'
